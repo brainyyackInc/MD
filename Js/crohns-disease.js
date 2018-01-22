@@ -257,6 +257,18 @@
     		$('.mastMobile-nav').fadeIn();
     	}
         sendMetrics();
+        $left = $('.slider').width();
+        console.log($left);
+        $('.slider ul').each(function(){
+          $(this).css('width',($(this).children().length)*$left);
+          $i = 0;
+          $(this).children('li').each(function(){
+            $(this).css('left',''+$i*$left+'px');
+            $i++;
+          });
+          $(this).next('.after_nav').attr('max', '-'+($(this).children().length - 1)*$left+'');
+        });
+
     	return false;
     });
 
@@ -271,6 +283,18 @@
     		show_slideshow($text_relevant);
     	};
         sendMetrics();
+        $left = $('.slider').width();
+        console.log($left);
+        $('.slider ul').each(function(){
+          $(this).css('width',($(this).children().length)*$left);
+          $i = 0;
+          $(this).children('li').each(function(){
+            $(this).css('left',''+$i*$left+'px');
+            $i++;
+          });
+          $(this).after('<a href="#" class="after_nav" max="-'+($(this).children().length - 1)*$left+'" style="display:none;">></a>');
+        });
+            
     	return false;
     });
 
