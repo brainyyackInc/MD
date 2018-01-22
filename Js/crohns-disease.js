@@ -256,7 +256,6 @@
     	if($(window).outerWidth() < 992){
     		$('.mastMobile-nav').fadeIn();
     	}
-        sendMetrics();
         $left = $('.slider').width();
         console.log($left);
         $('.slider ul').each(function(){
@@ -364,7 +363,6 @@
     		});
     	}
     	$(this).css('pointer-events','all');
-        sendMetrics();
     	return false;		
     })
 
@@ -381,12 +379,11 @@
     		});
     	}
     	$(this).css('pointer-events','all');
-        sendMetrics();
     	return false;	
     })
     
     function sendMetrics(){
-        var metrics = {
+        /*var metrics = {
             "s_site": "core",
             "s_account": "webmddev",
             "s_sponsor_brand": "Abbvie_Humira Crohns",
@@ -409,14 +406,10 @@
             "center_id": "1671",
             "center_prefix": "www",
             "center_url": "/ibd-crohns-disease/crohns-disease/default.htm"
-        };
+        };*/
         
-        $.ajax({
-            url: "https://www.staging.webmd.com/ibd-crohns-disease/crohns-disease/treat-18/live/interact-crohns",
-            data: metrics,
-            success: function(result){
-                //console.log('metric sent');
-            }
+        webmd.metrics.dpv({
+                        "s_site": "core"
         });
         
     }
