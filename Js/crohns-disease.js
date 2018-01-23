@@ -296,8 +296,42 @@
             $this.next().slideToggle(350);
           }
       }
-        webmd.ads2.refresh()
-        sendMetrics();
+        
+        (function sendMetrics(){
+        var linktext = $slideshow_relevant;
+        var link = $('#link_' + linktext).val();
+        var metrics = {
+            "s_site": "core",
+            "s_account": "webmddev",
+            "s_sponsor_brand": "Abbvie_Humira Crohns",
+            "s_sponsor_program": "Abbvie_Humira Crohns_Treating and Living With Crohns Disease",
+            "s_package_name": "Crohns Live Well",
+            "s_package_type": "editorial destination",
+            "s_assetname": "interact-crohns", 
+            "s_pagename": link,
+            "s_business": "interact-crohns", 
+            "s_business_reference": "Tool",
+            "s_sponsored_uri": window.location.pathname,
+            "s_publication_source": "webmd",
+            "s_channel_super_portal": "Digestive Disorders",
+            "s_channel_health": "Inflammatory Bowel Disease Crohns Disease",
+            "s_channel_mini": "Crohns Disease",
+            "s_object_type": "wbmd_pb_page",
+            "s_site_class": "ooc",
+            "s_asset_id": "091e9c5e818854f4",
+            "s_unique_id": "091e9c5e818854f4",
+            "s_company": "webmd",
+            "center_name": "Crohns Disease",
+            "center_id": "1671",
+            "center_prefix": "www",
+            "center_url": "/ibd-crohns-disease/crohns-disease/default.htm"
+        };
+        console.log('sending metrics, metrics = ' + JSON.stringify(metrics));
+        webmd.metrics.dpv({
+            metrics
+        });
+        webmd.ads2.refresh() 
+    })();
 
             
     	return false;
@@ -353,9 +387,7 @@
     	$(this).next('.after_nav').after($afer_list);
 
     })
-    
-    
-
+ 
     $('.prev_nav').click(function(){
     	$slider = $(this).next('ul');
 
@@ -368,13 +400,11 @@
       slide_number = slide_number/latime_slider;
       slide_number++;
 
-
       if(slide_number>1){
         slide_number--;
         change_item($slider.attr('class'),slide_number);
       };
-      webmd.ads2.refresh()
-      sendMetrics();
+     
     	return false;		
     })
 
@@ -395,9 +425,8 @@
         slide_number++;
         change_item($slider.attr('class'),slide_number);
       };
-      webmd.ads2.refresh()
-      sendMetrics();
-    	return false;	
+      
+      return false;	
     })
 
     function change_item(relevant_slideshow, item_number){
@@ -434,43 +463,11 @@
 
     $('span.bullet').click(function(){
       // console.log($(this).parent().prev().prev().attr('class'));
-     change_item($(this).parent().prev().prev().attr('class'),$(this).attr('item-number'));
-     webmd.ads2.refresh()
-     sendMetrics();
-      return false;
+        change_item($(this).parent().prev().prev().attr('class'),$(this).attr('item-number'));
+        return false;
     });
     
-    function sendMetrics(){
-        /*var metrics = {
-            "s_site": "core",
-            "s_account": "webmddev",
-            "s_sponsor_brand": "Abbvie_Humira Crohns",
-            "s_sponsor_program": "Abbvie_Humira Crohns_Treating and Living With Crohns Disease",
-            "s_package_name": "Crohns Live Well",
-            "s_package_type": "editorial destination",
-            "s_assetname": "interact-crohns", 
-            "s_business": "interact-crohns", 
-            "s_business_reference": "Tool",
-            "s_publication_source": "webmd",
-            "s_channel_super_portal": "Digestive Disorders",
-            "s_channel_health": "Inflammatory Bowel Disease Crohns Disease",
-            "s_channel_mini": "Crohns Disease",
-            "s_object_type": "wbmd_pb_page",
-            "s_asset_id": "091e9c5e818854f4",
-            "s_site_class": "ooc",
-            "s_unique_id": "091e9c5e818854f4",
-            "s_company": "webmd",
-            "center_name": "Crohns Disease",
-            "center_id": "1671",
-            "center_prefix": "www",
-            "center_url": "/ibd-crohns-disease/crohns-disease/default.htm"
-        };*/
-        
-        webmd.metrics.dpv({
-                        "s_site": "core"
-        });
-        
-    }
+ 
 
   // HEIGHT SLIDER
   $('.pane-button').on('click',function(){
