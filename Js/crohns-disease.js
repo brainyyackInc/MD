@@ -203,21 +203,21 @@
               "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-k-1",
               "description": "Just like Crohn’s irritates and inflames the digestive tract, bronchitis messes with the lining of your airways. That irritation brings extra mucus. That makes you cough, which also makes it hard to breathe.",
               "common": "<b>How common is it?</b></br> Less than 1% of people with Crohn's will have the disease affect their airways.",
-              "image": ""
+              "image": "bronchiectasis.png"
             },
             {
               "name": "Interstitial Lung Disease",
               "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-k-2",
               "description": "When your airways and lungs are irritated and inflamed for a long time, they can scar. This keeps them from working like they should. The damage often can’t be reversed. Sometimes, you need a lung transplant to fix it.",
               "common": "<b>How common is it?</b></br> Less than 1% of those with Crohn’s will have the disease affect their lungs.",
-              "image": ""
+              "image": "interstitial_lung_disease.png"
             },
             {
               "name": "Organizing Pneimonia",
               "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-k-3",
               "description": "Inflammatory conditions like Crohn’s raise your chances of this rare lung condition. You get it when the smallest spaces that exchange air in your lungs get filled with connective tissue. It causes you to cough and makes you short of breath.",
               "common": "<b>How common is it?</b></br> This is an extremely rare condition.",
-              "image": ""
+              "image": "organizing_pneumonia.png"
             }
         ]
     }
@@ -275,6 +275,7 @@
     	if($('.'+$slideshow_relevant).is('ul')){
     		//$('.'+$slideshow_relevant).fadeIn();
     		show_slideshow($slideshow_relevant);
+
     	}else if($('.'+$slideshow_relevant).is('li')){
     		$text_relevant = $('.'+$slideshow_relevant).parent('ul').attr('class');
     		// show_slideshow($text_relevant);
@@ -344,14 +345,19 @@
 
     $final_data = '';
     $max_height = 0;
-    $.each($data_array, function(){
+
+    console.log($data_array.length)
+    // console.log($data_array);
+    $.each($data_array, function(idy){
     	// console.log(this);
     	$final_data += '<ul class="'+this.name.replace(/ /g,'')+'" style="display: none;">';
     	$left = $('.slider').width();
     	$i = 0;
+      $actual_cat = this;
     	$cat_name = this.name;
-    	$.each(this.sub, function(){
-    		// console.log(this);
+      $length = this.sub.length;
+    	$.each(this.sub, function(idx){
+    		
     		$final_data += '<li class="'+this.name.replace(/ /g,'')+'" style="left: '+$i*$left+'px">';
     		$final_data += '<div class="container clearfix">';
 			$final_data += '<div class="left-side">';
@@ -363,9 +369,28 @@
     		$final_data += '<span>'+this.common+'</span>';
     		$final_data += '</div>';
     		$final_data += '<div class="right-side">';
+        $final_data += '<a data-fancybox="" href="'+jpcpjs_background_image_url+this.image+'"><img src="Img/zoom.png" /></a>';
     		$final_data += '<img src="'+jpcpjs_background_image_url+this.image+'">';  
     		$final_data += '</div>';  
-    		$final_data += '</div>';		
+    		$final_data += '</div>';
+        console.log(idy);
+        if(idy == $data_array.length-1 && idx == $length-1){
+            $final_data += '<a href="#" category="'+$data_array[0].name+'" slide="1" class="next_slide">Next: '+$data_array[0].name+' - '+$data_array[0].sub[0].name+'</a>';
+            console.log('text');
+        }else{
+          if(idx < $length-1){
+            console.log($data_array[idy].sub[idx+1].name);
+            $final_data += '<a href="#" category="'+$data_array[idy].name+'" slide="'+(idx+2)+'" class="next_slide">Next: '+$data_array[idy].name+' - '+$data_array[idy].sub[idx+1].name+'</a>';
+          }
+
+          if(idx == $length-1){
+            console.log($data_array[idy+1].sub[0].name);
+            $final_data += '<a href="#" category="'+$data_array[idy+1].name+'" slide="1" class="next_slide">Next: '+$data_array[idy+1].name+' - '+$data_array[idy+1].sub[0].name+'</a>';
+          }
+        }
+        
+        // console.log($data_array[idy].sub[idx+1].name);
+       // $final_data += '<a href="#" category="'+$cat_name+'" slide="'+(idx+2)+'" class="next_slide">Next: '+$cat_name+' - '+$data_array[idy].sub[idx+1].name+'</a>';
     		$final_data += '</li>';
     		$i++;
     	});
@@ -441,6 +466,7 @@
           $('.'+relevant_slideshow).animate({
             left: latime_slider * (parseInt(item_number) - 1) * -1
           });
+          next_slider = parseInt(item_number)+1;
         }
       }else{
         show_slideshow(relevant_slideshow);
@@ -454,6 +480,7 @@
           $('.'+relevant_slideshow).animate({
             left: latime_slider * (parseInt(item_number) - 1) * -1
           });
+          next_slider = parseInt(item_number)+1;
         }
       }
       return relevant_slideshow + item_number;
@@ -466,7 +493,18 @@
         change_item($(this).parent().prev().prev().attr('class'),$(this).attr('item-number'));
         return false;
     });
-    
+
+    $('.next_slide').on('click',function(){
+      change_item($(this).attr('category'), $(this).attr('slide'));
+      return false;
+    });
+
+
+      $.fancybox.defaults.btnTpl = {
+
+
+        close : '<button data-fancybox-close class="fancybox-button fancybox-button--close" title="{{CLOSE}}">close</button>'
+      };
  
 
   // HEIGHT SLIDER
@@ -498,22 +536,4 @@
     $(".Mobile-navbarPane").hide();
   });
 
-  // // TOGGLE MOBILE MENU
-  // $(document).ready(function(){
-  //   $('.mastMobile-nav .mastfooter-channel-link').click(function() {
-                
-  //     var $this = $(this);
-                
-  //       if ($this.next().hasClass('show')) {
-  //         $this.next().removeClass('show');
-  //         $this.parent().removeClass('bg-w');
-  //         $this.next().slideUp(350);
-  //       } else {
-  //         $this.next().parent().addClass("bg-w").siblings().removeClass('bg-w');
-  //         $this.parent().parent().find('.mastfooter-nav-submenu').removeClass('show');
-  //         $this.parent().parent().find('.mastfooter-nav-submenu').slideUp(350);
-  //         $this.next().toggleClass('show');
-  //         $this.next().slideToggle(350);
-  //       }
-  //   });
-  // }); 
+
