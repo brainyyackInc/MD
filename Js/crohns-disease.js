@@ -332,7 +332,7 @@
 
             var data = mainData['sub'][currentIndex];
 
-            console.log(data);
+            // console.log(data);
 
             webmd.metrics.dpv({
                 moduleName: 'lln-edintrnav_' + letter + '-' + currentIndex,
@@ -419,23 +419,23 @@
     		$final_data += '<span>'+this.common+'</span>';
     		$final_data += '</div>';
     		$final_data += '<div class="right-side">';
-        $final_data += '<a data-fancybox="" href="'+jpcpjs_background_image_url+this.image+'"><img src="Img/zoom.png" /></a>';
+        $final_data += '<a data-fancybox="" href="'+jpcpjs_background_image_url+this.image+'" id="img-op"><img src="Img/zoom.png" /></a>';
     		$final_data += '<img src="'+jpcpjs_background_image_url+this.image+'">';  
     		$final_data += '</div>';  
     		$final_data += '</div>';
         console.log(idy);
         if(idy == $data_array.length-1 && idx == $length-1){
-            $final_data += '<a href="#" category="'+$data_array[0].name+'" slide="1" class="next_slide">Next: '+$data_array[0].name+' - '+$data_array[0].sub[0].name+'</a>';
+            $final_data += '<a href="#" category="'+$data_array[0].name+'" slide="1" class="next_slide" id="edintr_nextlk">Next: '+$data_array[0].name+' - '+$data_array[0].sub[0].name+'</a>';
             console.log('text');
         }else{
           if(idx < $length-1){
             console.log($data_array[idy].sub[idx+1].name);
-            $final_data += '<a href="#" category="'+$data_array[idy].name+'" slide="'+(idx+2)+'" class="next_slide">Next: '+$data_array[idy].name+' - '+$data_array[idy].sub[idx+1].name+'</a>';
+            $final_data += '<a href="#" category="'+$data_array[idy].name+'" slide="'+(idx+2)+'" class="next_slide" id="edintr_nextlk">Next: '+$data_array[idy].name+' - '+$data_array[idy].sub[idx+1].name+'</a>';
           }
 
           if(idx == $length-1){
             console.log($data_array[idy+1].sub[0].name);
-            $final_data += '<a href="#" category="'+$data_array[idy+1].name+'" slide="1" class="next_slide">Next: '+$data_array[idy+1].name+' - '+$data_array[idy+1].sub[0].name+'</a>';
+            $final_data += '<a href="#" category="'+$data_array[idy+1].name+'" slide="1" class="next_slide" id="edintr_nextlk">Next: '+$data_array[idy+1].name+' - '+$data_array[idy+1].sub[0].name+'</a>';
           }
         }
         
@@ -449,13 +449,13 @@
 
     $('.slider').html($final_data);
     $('.slider ul').each(function(){
-    	$(this).before('<a href="#" class="prev_nav" max="0" style="display:none;"><</a>');
+    	$(this).before('<a href="#" class="prev_nav" id="prevar" max="0" style="display:none;"><</a>');
     	$(this).css('width',($(this).children().length)*$left);
-    	$(this).after('<a href="#" class="after_nav" max="-'+($(this).children().length - 1)*$left+'" style="display:none;">></a>');
+    	$(this).after('<a href="#" class="after_nav" id="nextar" max="-'+($(this).children().length - 1)*$left+'" style="display:none;">></a>');
     	$afer_list = '<div class="after_pointers">';
     	$elemente = $(this).children().length;
     	for(var i = 0; i<$elemente; i++){
-    		$afer_list += '<span class="bullet" item-number="'+(i+1)+'"></span>';
+    		$afer_list += '<span class="bullet" id="edintr_r-'+(i)+'" item-number="'+(i+1)+'"></span>';
     	}
     	$afer_list += '<div>';
 
@@ -553,7 +553,7 @@
       $.fancybox.defaults.btnTpl = {
 
 
-        close : '<button data-fancybox-close class="fancybox-button fancybox-button--close" title="{{CLOSE}}">close</button>'
+        close : '<button data-fancybox-close class="fancybox-button fancybox-button--close" id="img-cl" title="{{CLOSE}}">close</button>'
       };
  
 
