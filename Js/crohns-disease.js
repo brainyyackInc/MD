@@ -128,7 +128,7 @@
             "name": "Skin",
             "sub":  [
                 {
-                  "name": "Erthema Nodosum",
+                  "name": "Erythema Nodosum",
                   "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-g-1",
                   "description": "When Crohn’s flares up, it can cause red, painful bumps under your skin called erythema nodosum. Taking medication for other Crohn’s disease symptoms can help treat this skin condition, too. Talk to your doctor about it.",
                   "common": "<b>How common is it?</b></br> Up to 20% of people with Crohn's get erythema nodosum.",
@@ -222,7 +222,7 @@
                   "image": "interstitial_lung_disease.png"
                 },
                 {
-                  "name": "Organizing Pneimonia",
+                  "name": "Organizing Pneumonia",
                   "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-k-3",
                   "description": "Inflammatory conditions like Crohn’s raise your chances of this rare lung condition. You get it when the smallest spaces that exchange air in your lungs get filled with connective tissue. It causes you to cough and makes you short of breath.",
                   "common": "<b>How common is it?</b></br> This is an extremely rare condition.",
@@ -277,6 +277,7 @@
     });
 
     $('.mastfooter-nav a').on('click',function(){
+      var $this = $(this);
     	hide_background();
     	$slideshow_relevant = $(this).find('span').text().replace(/ /g,'');
         console.log($slideshow_relevant);
@@ -291,7 +292,19 @@
     	};
 
         if($(window).width() < 992){
-            var $this = $(this);
+
+          // console.log('hello');
+
+          // Close Menu
+
+          if ($(this).parent().hasClass('mastfooter-nav-subchannel')) {
+            // Slide Up and close menu
+
+            $(this).parents('.show').slideUp().removeClass('show');
+            $(this).parents('.bg-w').removeClass('bg-w');
+            $(".Mobile-navbarPane").hide();
+          }
+            
 
             if ($this.next().hasClass('show')) {
                 $this.next().removeClass('show');
@@ -458,8 +471,8 @@
     		$afer_list += '<span class="bullet" id="edintr_r-'+(i)+'" item-number="'+(i+1)+'"></span>';
     	}
     	$afer_list += '<div>';
-
-    	$(this).next('.after_nav').after($afer_list);
+      if ($elemente > 1)
+    	 $(this).next('.after_nav').after($afer_list);
 
     })
  
@@ -577,12 +590,12 @@
   });
 
   // SHOW MOBILE MENU
-  $(".mastfooter-nav-burgericon-menu").on('click',function() {
+  $(".mastfooter-nav-burgericon-menu").on('click', function() {
     $(".Mobile-navbarPane").show();
   });
 
   // HIDE MOBILE MENU 
-  $("#close").on('click',function() {
+  $("#close").on('click', function() {
     $(".Mobile-navbarPane").hide();
   });
 

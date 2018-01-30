@@ -116,14 +116,14 @@
 /* Submenu */
 .mastfooter-nav-submenu {
 	display: none;
-	background-color: rgba(0, 0, 0, 0.8);
-	padding: 12px;
+	/*padding: 12px;*/
 }
 .main-mav .mastfooter-nav-channel:hover .mastfooter-nav-submenu {
 	display: block;
 }
 .mastfooter-nav-submenu {
-	display: none;
+	background-color: rgba(0, 0, 0, 0.8);
+	/*display: none;*/
 	position: absolute;
 	bottom: 57px;
 	text-align: center;
@@ -131,9 +131,13 @@
 	z-index: 12;
 }
 .mastfooter-nav-subchannel {
+	padding: 6px;
 	padding-bottom: 10px;
 	font-size: 12px;
 	line-height: 16px;
+}
+.mastfooter-nav-subchannel a {
+	display: block;
 }
 .mast-footer-subname {
 	padding-bottom: 10px;
@@ -573,6 +577,9 @@
 		border-right: 2px solid #fff;
 		border-left: 2px solid #fff;
 	}
+	.mastMobile-nav .mastfooter-nav-channel a {
+		display: block;
+	}
 	.bg-w {
 		background-color: #fff;
 		border-top: 2px solid #233a59 !important;
@@ -645,16 +652,16 @@
 		max-width: 360px;
 	}
 	.after_nav, .prev_nav{
-		display: none !important;
+		/*display: none !important;*/
 	}
 	.slider ul{
-		height: 755px;
+		height: 785px;
 	}
 	.pane-img, .slider_container, .slider{
-		height: 850px;
+		height: 880px;
 	}
 	.prev_nav, .after_nav, .after_pointers{
-		top: 740px;
+		top: 770px;
 	}
 	.after_pointers span{
 		margin: 20px 10px;
