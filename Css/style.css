@@ -214,6 +214,7 @@
 	cursor: pointer;
 }
 .slider_container{
+	background-color:#2B5C6D;
 	display: none;
 }
 .slider{
@@ -277,21 +278,22 @@
 .slider ul li{
 	height: 100%;
 	width: 100vw;
-	max-width: 1230px;
+	max-width: 1130px;
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	display: block;
 	overflow: hidden;
+	padding:0px 40px;
 }
 
 .prev_nav, .after_nav{
 	display: block;
 	z-index: 99;
 	position:absolute;	
-	top: 580px;
+	top: 180px;
 	font-size: 90px;
-	color:black !important;
+	color:#ffffff !important;
 	font-family: 'Advent Pro', sans-serif;
 	font-weight: bold;
 }
@@ -301,10 +303,10 @@
 	text-decoration:none;
 }
 .prev_nav{	
-	left: 4%;	
+	left: 0px;	
 }
 .after_nav{
-	right: 4%;	
+	right: 0px;	
 }
 
 .left-side{
