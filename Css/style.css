@@ -94,14 +94,14 @@
 	border-right: 0.5px solid #cdcdcd;
 	border-left: 0.5px solid #cdcdcd;
 }
-.main-mav .mastfooter-nav-channel:hover {
+.main-mav .mastfooter-nav-channel:hover, .main-mav .active_disease {
 	background-color: #fff;
 }
 .mastfooter-nav-channel .mastfooter-channel-name {
 	line-height: 60px;
 	color: #fff;
 }
-.main-mav .mastfooter-nav-channel:hover .mastfooter-channel-name {
+.main-mav .mastfooter-nav-channel:hover .mastfooter-channel-name, .main-mav .active_disease .mastfooter-channel-name{
 	color: #000;
 }
 .mastfooter-channel-name {
@@ -278,7 +278,7 @@
 .slider ul li{
 	height: 100%;
 	width: 100vw;
-	max-width: 1130px;
+	max-width: 1230px;
 	position: absolute;
 	top: 0px;
 	left: 0px;

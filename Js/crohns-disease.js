@@ -234,23 +234,27 @@
     };
 
     function hide_background(){
-    	if($('.main-text-Carousel').css('display') !== 'none'){
-    		$('.main-text-Carousel').fadeOut('600');
-    		$('.cb-slideshow').fadeOut('500');
-    		$('.slider_container').fadeIn('800');
-    	}
+      if($('.main-text-Carousel').css('display') !== 'none'){
+        $('.main-text-Carousel').fadeOut('600');
+        $('.cb-slideshow').fadeOut('500');
+        $('.slider_container').fadeIn('800');
+      }
     }
 
     function show_slideshow(text){
-    	if($('.slider ul.'+text).css('display') == 'none'){
-    		$('.slider ul').fadeOut();
-    		$('.slider .prev_nav').fadeOut();
-    		$('.slider .after_nav').fadeOut();
-    		$('.slider .after_pointers').fadeOut();
-	    	$('.slider ul.'+text).fadeIn();
-		    $('.slider ul.'+text).prev('.prev_nav').fadeIn();
-		    $('.slider ul.'+text).next('.after_nav').fadeIn();
-		    $('.slider ul.'+text).next().next('.after_pointers').fadeIn();
+      if($('.slider ul.'+text).css('display') == 'none'){
+
+        $('.mastfooter-nav-list li').removeClass('active_disease');
+        $('.mastfooter-nav-list li a span:contains("'+text+'")').parent().parent().addClass('active_disease');
+        $('.slider ul').hide();
+        $('.slider ul').css('left',0);
+        $('.slider .prev_nav').fadeOut();
+        $('.slider .after_nav').fadeOut();
+        $('.slider .after_pointers').fadeOut();
+        $('.slider ul.'+text).fadeIn();
+        $('.slider ul.'+text).prev('.prev_nav').fadeIn();
+        $('.slider ul.'+text).next('.after_nav').fadeIn();
+        $('.slider ul.'+text).next().next('.after_pointers').fadeIn();
         $left = $('.slider').width();
         console.log($left);
         $('.slider ul').each(function(){
@@ -263,33 +267,33 @@
           $(this).next('.after_nav').attr('max', '-'+($(this).children().length - 1)*$left+'');
         });
 
-    	}
+      }
     }
 
     $('.pane-button').on('click',function(){
-    	hide_background();
-    	show_slideshow('Intestines');
-    	if($(window).outerWidth() < 992){
-    		$('.mastMobile-nav').fadeIn();
-    	}
+      hide_background();
+      show_slideshow('Intestines');
+      if($(window).outerWidth() < 992){
+        $('.mastMobile-nav').fadeIn();
+      }
 
-    	return false;
+      return false;
     });
 
     $('.mastfooter-nav a').on('click',function(){
       var $this = $(this);
-    	hide_background();
-    	$slideshow_relevant = $(this).find('span').text().replace(/ /g,'');
+      hide_background();
+      $slideshow_relevant = $(this).find('span').text().replace(/ /g,'');
         console.log($slideshow_relevant);
-    	if($('.'+$slideshow_relevant).is('ul')){
-    		//$('.'+$slideshow_relevant).fadeIn();
-    		show_slideshow($slideshow_relevant);
+      if($('.'+$slideshow_relevant).is('ul')){
+        //$('.'+$slideshow_relevant).fadeIn();
+        show_slideshow($slideshow_relevant);
 
-    	}else if($('.'+$slideshow_relevant).is('li')){
-    		$text_relevant = $('.'+$slideshow_relevant).parent('ul').attr('class');
-    		// show_slideshow($text_relevant);
+      }else if($('.'+$slideshow_relevant).is('li')){
+        $text_relevant = $('.'+$slideshow_relevant).parent('ul').attr('class');
+        // show_slideshow($text_relevant);
             change_item($text_relevant, parseInt($(this).parent().index()) + 1);
-    	};
+      };
 
         if($(window).width() < 992){
 
@@ -396,11 +400,11 @@
     })();
 
             
-    	return false;
+      return false;
     });
 
-				
-				$data_array = jpcpjs_data.menu;
+        
+        $data_array = jpcpjs_data.menu;
 
     // console.log($data_array);
 
@@ -410,74 +414,74 @@
     console.log($data_array.length)
     // console.log($data_array);
     $.each($data_array, function(idy){
-    	// console.log(this);
-    	$final_data += '<ul class="'+this.name.replace(/ /g,'')+'" style="display: none;">';
-    	$left = $('.slider').width();
-    	$i = 0;
+      // console.log(this);
+      $final_data += '<ul class="'+this.name.replace(/ /g,'')+'" style="display: none;">';
+      $left = $('.slider').width();
+      $i = 0;
       $actual_cat = this;
-    	$cat_name = this.name;
+      $cat_name = this.name;
         $letter = this.letter;
       $length = this.sub.length;
-    	$.each(this.sub, function(idx){
+      $.each(this.sub, function(idx){
 
-    		
-    		$final_data += '<li class="'+this.name.replace(/ /g,'')+'" style="left: '+$i*$left+'px">';
-    		$final_data += '<div class="container clearfix">';
-			$final_data += '<div class="left-side">';
-			$final_data += '<div class="upsection">';
-			$final_data += '<h4>'+$cat_name+':</h4>';
-    		$final_data += '<h3>'+this.name+'</h3>';
-    		$final_data += '<p>'+this.description+'</p>';
-    		$final_data += '</div>';
-    		$final_data += '<span>'+this.common+'</span>';
-    		$final_data += '</div>';
-    		$final_data += '<div class="right-side">';
+        
+        $final_data += '<li class="'+this.name.replace(/ /g,'')+'" style="left: '+$i*$left+'px">';
+        $final_data += '<div class="container clearfix">';
+      $final_data += '<div class="left-side">';
+      $final_data += '<div class="upsection">';
+      $final_data += '<h4>'+$cat_name+':</h4>';
+        $final_data += '<h3>'+this.name+'</h3>';
+        $final_data += '<p>'+this.description+'</p>';
+        $final_data += '</div>';
+        $final_data += '<span>'+this.common+'</span>';
+        $final_data += '</div>';
+        $final_data += '<div class="right-side">';
         $final_data += '<a data-fancybox="" href="'+jpcpjs_background_image_url+this.image+'" id="img-op"><img src="Img/zoom.png" /></a>';
-    		$final_data += '<img src="'+jpcpjs_background_image_url+this.image+'">';  
-    		$final_data += '</div>';  
-    		$final_data += '</div>';
-        console.log(idy);
-        if(idy == $data_array.length-1 && idx == $length-1){
-            $final_data += '<a href="#" category="'+$data_array[0].name+'" slide="1" class="next_slide" id="edintr_nextlk">Next: '+$data_array[0].name+' - '+$data_array[0].sub[0].name+'</a>';
-            console.log('text');
-        }else{
-          if(idx < $length-1){
-            console.log($data_array[idy].sub[idx+1].name);
-            $final_data += '<a href="#" category="'+$data_array[idy].name+'" slide="'+(idx+2)+'" class="next_slide" id="edintr_nextlk">Next: '+$data_array[idy].name+' - '+$data_array[idy].sub[idx+1].name+'</a>';
-          }
+        $final_data += '<img src="'+jpcpjs_background_image_url+this.image+'">';  
+        $final_data += '</div>';  
+        $final_data += '</div>';
+        // console.log(idy);
+        // if(idy == $data_array.length-1 && idx == $length-1){
+        //     $final_data += '<a href="#" category="'+$data_array[0].name+'" slide="1" class="next_slide" id="edintr_nextlk">Next: '+$data_array[0].name+' - '+$data_array[0].sub[0].name+'</a>';
+        //     console.log('text');
+        // }else{
+        //   if(idx < $length-1){
+        //     console.log($data_array[idy].sub[idx+1].name);
+        //     $final_data += '<a href="#" category="'+$data_array[idy].name+'" slide="'+(idx+2)+'" class="next_slide" id="edintr_nextlk">Next: '+$data_array[idy].name+' - '+$data_array[idy].sub[idx+1].name+'</a>';
+        //   }
 
-          if(idx == $length-1){
-            console.log($data_array[idy+1].sub[0].name);
-            $final_data += '<a href="#" category="'+$data_array[idy+1].name+'" slide="1" class="next_slide" id="edintr_nextlk">Next: '+$data_array[idy+1].name+' - '+$data_array[idy+1].sub[0].name+'</a>';
-          }
-        }
+        //   if(idx == $length-1){
+        //     console.log($data_array[idy+1].sub[0].name);
+        //     $final_data += '<a href="#" category="'+$data_array[idy+1].name+'" slide="1" class="next_slide" id="edintr_nextlk">Next: '+$data_array[idy+1].name+' - '+$data_array[idy+1].sub[0].name+'</a>';
+        //   }
+        // }
         
         // console.log($data_array[idy].sub[idx+1].name);
        // $final_data += '<a href="#" category="'+$cat_name+'" slide="'+(idx+2)+'" class="next_slide">Next: '+$cat_name+' - '+$data_array[idy].sub[idx+1].name+'</a>';
-    		$final_data += '</li>';
-    		$i++;
-    	});
-    	$final_data += '</ul>';
+        $final_data += '</li>';
+        $i++;
+      });
+      $final_data += '</ul>';
     })
 
     $('.slider').html($final_data);
     $('.slider ul').each(function(){
-    	$(this).before('<a href="#" class="prev_nav" id="prevar" max="0" style="display:none;"><</a>');
-    	$(this).css('width',($(this).children().length)*$left);
-    	$(this).after('<a href="#" class="after_nav" id="nextar" max="-'+($(this).children().length - 1)*$left+'" style="display:none;">></a>');
-    	$afer_list = '<div class="after_pointers">';
-    	$elemente = $(this).children().length;
-    	for(var i = 0; i<$elemente; i++){
-    		$afer_list += '<span class="bullet" id="edintr_r-'+(i)+'" item-number="'+(i+1)+'"></span>';
-    	}
-    	$afer_list += '<div>';
+      $(this).before('<a href="#" class="prev_nav" id="prevar" max="0" style="display:none;"><</a>');
+      $(this).css('width',($(this).children().length)*$left);
+      $(this).after('<a href="#" class="after_nav" id="nextar" max="-'+($(this).children().length - 1)*$left+'" style="display:none;">></a>');
+      $afer_list = '<div class="after_pointers">';
+      $elemente = $(this).children().length;
+      // for(var i = 0; i<$elemente; i++){
+      //   $afer_list += '<span class="bullet" id="edintr_r-'+(i)+'" item-number="'+(i+1)+'"></span>';
+      // }
+      $afer_list += '<div>';
       if ($elemente > 1)
-    	 $(this).next('.after_nav').after($afer_list);
+       $(this).next('.after_nav').after($afer_list);
 
     })
  
     $('.prev_nav').click(function(){
-    	$slider = $(this).next('ul');
+      $slider = $(this).next('ul');
 
       latime_slider = $('.slider').width();
       slide_number = $slider.css('left');
@@ -491,13 +495,64 @@
       if(slide_number>1){
         slide_number--;
         change_item($slider.attr('class'),slide_number);
-      };
+      }else{
+        control = $(this).prev().prev().prev().attr('class');
+        console.log(control);
+        if(!control){
+              relevant_slideshow = 'Lungs';
+                item_number = 3;
+            show_slideshow(relevant_slideshow);
+            latime_slider = $('.slider').width();
+            slide_number = $('.'+relevant_slideshow).css('left');
+            slide_number = slide_number.slice(0, -2);
+            slide_number = slide_number * -1;
+            slide_number = slide_number/latime_slider;
+            slide_number++;
+            if(slide_number != item_number){
+              // $('.'+relevant_slideshow).animate({
+              //   left: latime_slider * (parseInt(item_number) - 1) * -1
+              // });
+              $('.'+relevant_slideshow).css('left',latime_slider * (parseInt(item_number) - 1) * -1);
+              next_slider = parseInt(item_number)+1;
+            }
+        }else{
+          if($(this).prev().prev().prev().is('ul')){
+            //change_item($(this).prev().prev().prev().attr('class'), $(this).prev().prev().prev().children().length);
+                relevant_slideshow = $(this).prev().prev().prev().attr('class');
+                item_number = $(this).prev().prev().prev().children().length;
+                
+
+
+
+
+          }else{
+            //change_item($(this).prev().prev().attr('class'), $(this).prev().prev().children().length);
+             relevant_slideshow = $(this).prev().prev().attr('class');
+                item_number = $(this).prev().prev().children().length;
+          }
+
+            show_slideshow(relevant_slideshow);
+            latime_slider = $('.slider').width();
+            slide_number = $('.'+relevant_slideshow).css('left');
+            slide_number = slide_number.slice(0, -2);
+            slide_number = slide_number * -1;
+            slide_number = slide_number/latime_slider;
+            slide_number++;
+            if(slide_number != item_number){
+              // $('.'+relevant_slideshow).animate({
+              //   left: latime_slider * (parseInt(item_number) - 1) * -1
+              // });
+              $('.'+relevant_slideshow).css('left',latime_slider * (parseInt(item_number) - 1) * -1);
+              next_slider = parseInt(item_number)+1;
+            }
+        }
+      }
      
-    	return false;		
+      return false;   
     })
 
     $('.after_nav').click(function(){
-    	$slider = $(this).prev('ul');
+      $slider = $(this).prev('ul');
 
       latime_slider = $('.slider').width();
       slide_number = $slider.css('left');
@@ -512,13 +567,27 @@
       if(slide_number<$slider.children().length){
         slide_number++;
         change_item($slider.attr('class'),slide_number);
-      };
+      }else{
+        control = $(this).next().next().next().attr('class');
+        if(!control){
+            change_item('Intestines','1');
+        }else{
+          if($slider.children().length == 1){
+            change_item($(this).next().next().attr('class'), '1');
+          }else{
+            change_item($(this).next().next().next().attr('class'), '1');
+          }
+        }
+        
+
+      }
       
-      return false;	
+      return false; 
     })
 
     function change_item(relevant_slideshow, item_number){
       if($('.'+relevant_slideshow).css('display') == 'block'){
+        // $('.slider ul').fadeOut();
         latime_slider = $('.slider').width();
         slide_number = $('.'+relevant_slideshow).css('left');
         slide_number = slide_number.slice(0, -2);
@@ -526,13 +595,17 @@
         slide_number = slide_number/latime_slider;
         slide_number++;
         if(slide_number != item_number){
-          $('.'+relevant_slideshow).animate({
-            left: latime_slider * (parseInt(item_number) - 1) * -1
-          });
+          // $('.'+relevant_slideshow).animate({
+          //   left: latime_slider * (parseInt(item_number) - 1) * -1
+          // });
+          // $('.'+relevant_slideshow).fadeOut();
+          $('.'+relevant_slideshow).hide().css('left',latime_slider * (parseInt(item_number) - 1) * -1).fadeIn();
           next_slider = parseInt(item_number)+1;
+          //$('.'+relevant_slideshow).fadeIn();
         }
       }else{
         show_slideshow(relevant_slideshow);
+        
         latime_slider = $('.slider').width();
         slide_number = $('.'+relevant_slideshow).css('left');
         slide_number = slide_number.slice(0, -2);
@@ -540,10 +613,12 @@
         slide_number = slide_number/latime_slider;
         slide_number++;
         if(slide_number != item_number){
-          $('.'+relevant_slideshow).animate({
-            left: latime_slider * (parseInt(item_number) - 1) * -1
-          });
+          // $('.'+relevant_slideshow).animate({
+          //   left: latime_slider * (parseInt(item_number) - 1) * -1
+          // });
+          $('.'+relevant_slideshow).css('left',latime_slider * (parseInt(item_number) - 1) * -1);
           next_slider = parseInt(item_number)+1;
+          $('.'+relevant_slideshow).fadeIn();
         }
       }
       return relevant_slideshow + item_number;
