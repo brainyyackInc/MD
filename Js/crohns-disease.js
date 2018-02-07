@@ -137,8 +137,8 @@
                 {
                   "name": "Pyoderma Gangrenosum",
                   "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-g-2",
-                  "description": "When Crohn’s flares up, it can cause red, painful bumps under your skin called erythema nodosum. Taking medication for other Crohn’s disease symptoms can help treat this skin condition, too. Talk to your doctor about it.",
-                  "common": "<b>How common is it?</b></br> Up to 20% of people with Crohn's get erythema nodosum.",
+                  "description": "This causes large, painful ulcers to form on your skin. Usually, the condition shows up on your legs. These ulcers may come on anytime, not just when your Crohn’s symptoms are worse than usual.",
+                  "common": "<b>How common is it?</b></br> It's pretty rare. At most, 2% of people with Crohn's get pyoderma gangrenosum.",
                   "image": "pyoderma_gangrenosum.png"
                 }
             ]
@@ -181,10 +181,10 @@
             "name": "Blood",
             "sub": [
                 {
-                  "name": "Pernicious Anemia",
+                  "name": "B12 Deficiency",
                   "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-j-1",
-                  "description": "People with Crohn’s have trouble absorbing vitamin B12. Your body needs B12 to make red blood cells, which carry oxygen to your tissues. Chronically low B12 causes pernicious anemia, which makes you tired and weak and can damage your organs.",
-                  "common": "<b>How common is it?</b></br> Pernicious anemia is only one type of anemia found in Crohn’s. About 75% of people with Crohn’s will have some type of anemia or iron disorder.",
+                  "description": "People with Crohn’s have trouble absorbing vitamin B12. Your body needs B12 to make red blood cells, which carry oxygen to your tissues. Chronically low B12 causes anemia, which makes you tired and weak and can damage your organs.",
+                  "common": "<b>How common is it?</b></br> B12-related anemia is only one type of anemia found in Crohn’s. About 75% of people with Crohn’s will have some type of anemia or iron disorder.",
                   "image": "anemia.png"
                 },
                 {
@@ -197,8 +197,8 @@
                 {
                   "name": "Blood Clots",
                   "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-j-3",
-                  "description": "",
-                  "common": "",
+                  "description": "Crohn’s triples your risk of these. You’re more likely to get a type of clot called deep vein thrombosis. It forms deep in your leg, and it can break free and travel to your lungs. Once there, it’s called a pulmonary embolism, and it can be fatal.",
+                  "common": "<b>How common is it?</b></br>Between 10% and 30% of people with Crohn's will get blood clots.",
                   "image": "blood_clots.png"
                 }
             ]
@@ -222,8 +222,15 @@
                   "image": "interstitial_lung_disease.png"
                 },
                 {
-                  "name": "Organizing Pneumonia",
+                  "name": "Chronic Bronchitis",
                   "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-k-3",
+                  "description": "Just as Crohn’s irritates and inflames the digestive tract, bronchitis messes with the lining of your airways. That irritation brings extra mucus. That makes you cough, which also makes it hard to breathe.",
+                  "common": "<b>How common is it?</b></br> Less than 1% of people with Crohn's will have the disease affect their airways.",
+                  "image": "chronic_bronchitis.png"
+                },
+                {
+                  "name": "Organizing Pneumonia",
+                  "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-k-4",
                   "description": "Inflammatory conditions like Crohn’s raise your chances of this rare lung condition. You get it when the smallest spaces that exchange air in your lungs get filled with connective tissue. It causes you to cough and makes you short of breath.",
                   "common": "<b>How common is it?</b></br> This is an extremely rare condition.",
                   "image": "organizing_pneumonia.png"
@@ -232,6 +239,40 @@
         }
         ]
     };
+
+    // var latime_slider = $(window).width();
+
+    // $(window).load(function() {
+    //    latime_slider = $('.slider').width();
+    //    console.log(latime_slider);
+    // });
+
+    // $(document).ready(function()  {
+    //   latime_slider = $('.slider').width();
+    //   console.log(latime_slider);
+    // });
+
+    $(window).resize(function() {
+      
+      $left = $('.slider').width();
+      $('.slider ul').each(function(){
+        var size = 0;
+        var origWidth = parseInt($(this).css('width'));
+        var origLeft = parseInt($(this).css('left'));
+        var origIndex = Math.abs(origLeft/(origWidth/$(this).children().length));
+        $(this).css('width',($(this).children().length)*$left);
+        $i = 0;
+        $.each($(this).children(), function(i, e) {
+          $(e).css('left', $i*$left);
+          if (origIndex == $i) {
+            size = $i*$left;
+          }
+          $i++;
+        });
+        $(this).css('left', '-' + size + 'px');
+      });
+
+    });
 
     function hide_background(){
       if($('.main-text-Carousel').css('display') !== 'none'){
@@ -245,7 +286,11 @@
       if($('.slider ul.'+text).css('display') == 'none'){
 
         $('.mastfooter-nav-list li').removeClass('active_disease');
-        $('.mastfooter-nav-list li a span:contains("'+text+'")').parent().parent().addClass('active_disease');
+        $('.mastfooter-nav-list li a span').each(function(){
+          if($(this).text() == text){
+            $(this).parent().parent().addClass('active_disease');
+          }
+        });
         $('.slider ul').hide();
         $('.slider ul').css('left',0);
         $('.slider .prev_nav').fadeOut();
@@ -256,7 +301,7 @@
         $('.slider ul.'+text).next('.after_nav').fadeIn();
         $('.slider ul.'+text).next().next('.after_pointers').fadeIn();
         $left = $('.slider').width();
-        console.log($left);
+        
         $('.slider ul').each(function(){
           $(this).css('width',($(this).children().length)*$left);
           $i = 0;
@@ -284,7 +329,7 @@
       var $this = $(this);
       hide_background();
       $slideshow_relevant = $(this).find('span').text().replace(/ /g,'');
-        console.log($slideshow_relevant);
+        
       if($('.'+$slideshow_relevant).is('ul')){
         //$('.'+$slideshow_relevant).fadeIn();
         show_slideshow($slideshow_relevant);
@@ -305,17 +350,17 @@
             // Slide Up and close menu
 
             $(this).parents('.show').slideUp().removeClass('show');
-            $(this).parents('.bg-w').removeClass('bg-w');
+            $(this).parents('.white-background').removeClass('white-background');
             $(".Mobile-navbarPane").hide();
           }
             
 
             if ($this.next().hasClass('show')) {
                 $this.next().removeClass('show');
-                $this.parent().removeClass('bg-w');
+                $this.parent().removeClass('white-background');
                 $this.next().slideUp(350);
             } else {
-                $this.next().parent().addClass("bg-w").siblings().removeClass('bg-w');
+                $this.next().parent().addClass("white-background").siblings().removeClass('white-background');
                 $this.parent().parent().find('.mastfooter-nav-submenu').removeClass('show');
                 $this.parent().parent().find('.mastfooter-nav-submenu').slideUp(350);
                 $this.next().toggleClass('show');
@@ -411,7 +456,7 @@
     $final_data = '';
     $max_height = 0;
 
-    console.log($data_array.length)
+    
     // console.log($data_array);
     $.each($data_array, function(idy){
       // console.log(this);
@@ -484,6 +529,7 @@
       $slider = $(this).next('ul');
 
       latime_slider = $('.slider').width();
+
       slide_number = $slider.css('left');
 
       slide_number = slide_number.slice(0, -2);
@@ -549,12 +595,13 @@
       }
      
       return false;   
-    })
+    });
 
-    $('.after_nav').click(function(){
+    function nextSlide()  {
       $slider = $(this).prev('ul');
 
       latime_slider = $('.slider').width();
+      
       slide_number = $slider.css('left');
 
       slide_number = slide_number.slice(0, -2);
@@ -583,7 +630,27 @@
       }
       
       return false; 
-    })
+    }
+
+    $('.after_nav').click(nextSlide);
+    // $('.slider ul').on('swipeleft', function()  {
+    //   console.log('swipped');
+    //   nextSlide();
+    // });
+    // 
+    $(document).ready(function()  {
+
+      $(".slider").swipe({
+        //Single swipe handler for left swipes
+        swipe:function(event, direction, distance, duration, fingerCount) {
+          console.log('hello');
+          // $(this).text("You swiped " + direction + " " + ++count + " times " );  
+          nextSlide();
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+        threshold:30
+      });
+    });
 
     function change_item(relevant_slideshow, item_number){
       if($('.'+relevant_slideshow).css('display') == 'block'){
@@ -648,19 +715,19 @@
   // HEIGHT SLIDER
   $('.pane-button').on('click',function(){
     if($(window).outerWidth() < 992 && $(window).outerWidth() > 767){
-      $('.pane-img').addClass('hg-t');
+      $('.pane-img').addClass('height-large');
     }
     if($(window).outerWidth() < 767 && $(window).outerWidth() > 568) {
-      $('.pane-img').addClass('hg-m');
+      $('.pane-img').addClass('height-mediu');
     } 
     if($(window).outerWidth() < 568 && $(window).outerWidth() > 376) {
-      $('.pane-img').addClass('hg-s');
+      $('.pane-img').addClass('height-small');
     } 
     if($(window).outerWidth() < 376 && $(window).outerWidth() > 320) {
-      $('.pane-img').addClass('hg-xs');
+      $('.pane-img').addClass('height-very-small');
     }
     if($(window).outerWidth() < 320) {
-      $('.pane-img').addClass('hg-exs');
+      $('.pane-img').addClass('height-extra-small');
     }
   });
 
