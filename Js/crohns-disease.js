@@ -318,9 +318,6 @@
     $('.pane-button').on('click',function(){
       hide_background();
       show_slideshow('Intestines');
-      if($(window).outerWidth() < 992){
-        $('.mastMobile-nav').fadeIn();
-      }
 
       return false;
     });
@@ -482,7 +479,7 @@
         $final_data += '</div>';
         $final_data += '<div class="right-side">';
         $final_data += '<a data-fancybox="" href="'+jpcpjs_background_image_url+this.image+'" id="img-op"><img src="Img/zoom.png" /></a>';
-        $final_data += '<img src="'+jpcpjs_background_image_url+this.image+'">';  
+        $final_data += '<img ondragstart="return false" src="'+jpcpjs_background_image_url+this.image+'">';  
         $final_data += '</div>';  
         $final_data += '</div>';
         // console.log(idy);
@@ -599,10 +596,13 @@
 
     function nextSlide()  {
       $slider = $(this).prev('ul');
+      console.log($slider);
 
       latime_slider = $('.slider').width();
+      console.log(latime_slider);
       
       slide_number = $slider.css('left');
+      console.log(slide_number);
 
       slide_number = slide_number.slice(0, -2);
 
@@ -638,19 +638,48 @@
     //   nextSlide();
     // });
     // 
-    $(document).ready(function()  {
+    // $(document).ready(function()  {
 
-      $(".slider").swipe({
-        //Single swipe handler for left swipes
-        swipe:function(event, direction, distance, duration, fingerCount) {
-          console.log('hello');
-          // $(this).text("You swiped " + direction + " " + ++count + " times " );  
-          nextSlide();
-        },
-        //Default is 75px, set to 0 for demo so any distance triggers swipe
-        threshold:30
-      });
-    });
+    //   $(".slider").swipe({
+    //     //Single swipe handler for left swipes
+    //     swipe:function(event, direction, distance, duration, fingerCount) {
+    //       console.log('hello');
+    //       // $(this).text("You swiped " + direction + " " + ++count + " times " );  
+    //       nextSlide();
+    //     },
+    //     //Default is 75px, set to 0 for demo so any distance triggers swipe
+    //     threshold:30
+    //   });
+    // });
+
+
+       var myElement = document.getElementsByClassName('slider');
+       console.log(myElement[0]);
+       var mc = new Hammer(myElement[0]);
+       console.log(mc);
+
+       
+        mc.on('swiperight swipeleft', function(e) {
+          e.preventDefault();
+          if (e.type == 'swiperight') {
+            $('.prev_nav').each(function(){
+              if($(this).css('display') == 'block'){
+                $(this).trigger('click');
+                return false;
+              }
+            })
+          } else {
+            $('.after_nav').each(function(){
+              if($(this).css('display') == 'block'){
+                $(this).trigger('click');
+                return false;
+              }
+            })
+            
+          }
+
+        });
+      
 
     function change_item(relevant_slideshow, item_number){
       if($('.'+relevant_slideshow).css('display') == 'block'){
