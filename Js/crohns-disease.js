@@ -185,7 +185,7 @@
                   "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-j-1",
                   "description": "People with Crohn’s have trouble absorbing vitamin B12. Your body needs B12 to make red blood cells, which carry oxygen to your tissues. Chronically low B12 causes anemia, which makes you tired and weak and can damage your organs.",
                   "common": "<b>How common is it?</b></br> B12-related anemia is only one type of anemia found in Crohn’s. About 75% of people with Crohn’s will have some type of anemia or iron disorder.",
-                  "image": "anemia.png"
+                  "image": "b12deficiency.png"
                 },
                 {
                   "name": "Iron Deficiency Anemia",

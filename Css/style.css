@@ -593,6 +593,11 @@
 .mastMobile-nav {
 	display: none;
 }
+@media screen and (max-width: 992px) {
+	.mastMobile-nav {
+		display: block;
+	}
+}
 @keyframes imageAnimation { 
     0% { 
     	opacity: 0; 
