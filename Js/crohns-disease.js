@@ -165,7 +165,7 @@
                   "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-i-1",
                   "description": "Crohn’s messes with your body’s ability to take in vitamin D through your intestines. Often, this causes you to be low in it. Without enough vitamin D, you can’t absorb calcium. You need both in order to build healthy bones.",
                   "common": "<b>How common is it?</b></br> Up to 25% of people with Crohn's disease will have bone loss.",
-                  "image": "osteoporosis.png"
+                  "image": "osteoporosis_boneloss.png"
                 },
                 {
                   "name": "Osteoporosis",
