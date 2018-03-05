@@ -17,6 +17,7 @@
 	min-height: 80vh;
 	display: flex;
 	align-items: center;
+	background-color: #2B5C6D;
 }
 .center-pane {
 	padding: 60px;
@@ -473,6 +474,7 @@
 		float: none;
 		width: 100%;
 		order: 1;
+		height:50%;
 	}
 	.container {
 		display: flex;

@@ -23,9 +23,9 @@
               "image": "fissures.png"
             },
             {
-              "name": "Abcesses",
+              "name": "Abscesses",
               "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-a-3",
-              "description": "These are essentially a buildup of pus. You might get one in your abdomen, pelvic area, or near your anus. They happen when the inflammation in the lining of your intestines goes deep into your intestinal wall. Infection sets in, and dead cells, fluids, and bacteria come together. That forms the abscess.",
+              "description": "These are essentially a buildup of pus. You might get one in your abdomen, pelvic area, or near your anus. They happen when the inflammation in the lining of your intestines goes deep into your intestinal wall. Infection sets in, and dead cells, fluids, and bacteria get walled off. That forms the abscess.",
               "common": "<b>How common is it?</b></br> Up to 30% of people with Crohn's get an abscess.",
               "image": "abscesses.png"
             },
@@ -39,7 +39,7 @@
             {
               "name": "Colorectal Cancer",
               "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-a-5",
-              "description": "Another name for your large intestine is your colon. Having Crohn’s gives you higher odds of cancer in your colon. It can be easy to miss symptoms of it when you have Crohn’s, because many of them are the same, including blood in your stool, pain, and loose stools.",
+              "description": "Another name for your large intestine is your colon. Having Crohn’s gives you higher odds of cancer there. It can be easy to miss symptoms of it when you have Crohn’s, because many of them are the same, including blood in your stool, pain, and loose stools.",
               "common": "<b>How common is it?</b></br> Those who have Crohn's disease are up to 20 times more likely to get colorectal cancer than those who don't.",
               "image": "colorectal_cancer.png"
             }]
@@ -64,7 +64,7 @@
                 {
                   "name": "Gallstones",
                   "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-c-1",
-                  "description": "Crohn’s can affect how well your intestines absorb bile salts, which you need to digest cholesterol. Too much cholesterol in your bile can cause it to harden into stones and block the neck of your gallbladder. This causes severe pain.",
+                  "description": "Crohn’s can affect how well your intestines absorb bile salts, which you need to digest cholesterol. Too much cholesterol in your bile can make it harden into stones and block the neck of your gallbladder. This causes severe pain.",
                   "common": "<b>How common is it?</b></br> About a third of people with Crohn's get gallstones.",
                   "image": "gallstones.png"
                 }
@@ -117,7 +117,7 @@
                 {
                   "name": "Kidney Stones",
                   "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-f-1",
-                  "description": "Crohn’s can affect how well your intestines absorb fat. When fat gets left behind in your system, it binds to calcium and leaves behind a salt called oxalate. That can get absorbed through your intestines and go to your kidneys, where it can form stones.",
+                  "description": "Crohn’s can affect how well your intestines absorb fat. Problems doing that and dehydration from diarrhea can raise your risk of certain types of kidney stones.",
                   "common": "<b>How common is it?</b></br> As many as 19% of people with Crohn's get kidney stones.",
                   "image": "kidney_stones.png"
                 }
@@ -170,7 +170,7 @@
                 {
                   "name": "Osteoporosis",
                   "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-i-2",
-                  "description": "Crohn’s can cause your body to make more of a protein called cytokine. This causes inflammation, which stops your body's ability to build bone. That leads to the weak, brittle bones of osteoporosis. In addition, corticosteroids, drugs that treat the inflammation of Crohn’s, can upset bone building, too.",
+                  "description": "Along with calcium and vitamin D deficiency, Crohn’s can cause your body to make more proteins called cytokines. This causes inflammation, which stops your body's ability to build healthy bone. That leads to the weak, brittle bones of osteoporosis. In addition, corticosteroids, drugs that treat the inflammation of Crohn’s, can upset bone building, too.",
                   "common": "<b>How common is it?</b></br> Up to 30% of people with Crohn's get osteoporosis.",
                   "image": "osteoporosis.png"
                 }
@@ -210,8 +210,8 @@
                 {
                   "name": "Bronchiectasis",
                   "link": "/ibd-crohns-disease/crohns-disease/treat-18/live/interact-k-1",
-                  "description": "Just like Crohn’s irritates and inflames the digestive tract, bronchitis messes with the lining of your airways. That irritation brings extra mucus. That makes you cough, which also makes it hard to breathe.",
-                  "common": "<b>How common is it?</b></br> Less than 1% of people with Crohn's will have the disease affect their airways.",
+                  "description": "Doctors aren’t sure why, but Crohn’s can affect other linings besides your digestive tract. When the lining of your airways gets damaged, stretches, and scars, you get bronchiectasis. This makes it hard to clear mucus out of your airways, which raises your chances of getting lung infections.",
+                  "common": "<b>How common is it?</b></br> It's very rare.",
                   "image": "bronchiectasis.png"
                 },
                 {
