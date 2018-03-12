@@ -240,18 +240,6 @@
         ]
     };
 
-    // var latime_slider = $(window).width();
-
-    // $(window).load(function() {
-    //    latime_slider = $('.slider').width();
-    //    console.log(latime_slider);
-    // });
-
-    // $(document).ready(function()  {
-    //   latime_slider = $('.slider').width();
-    //   console.log(latime_slider);
-    // });
-
     $(window).resize(function() {
       
       $left = $('.slider').width();
@@ -478,7 +466,7 @@
         $final_data += '<span>'+this.common+'</span>';
         $final_data += '</div>';
         $final_data += '<div class="right-side">';
-        $final_data += '<a data-fancybox="" href="'+jpcpjs_background_image_url+this.image+'" id="img-op"><img src="Img/zoom.png" /></a>';
+        $final_data += '<a data-fancybox="" href="'+jpcpjs_background_image_url+this.image+'" id="img-op"></a>';
         $final_data += '<img ondragstart="return false" src="'+jpcpjs_background_image_url+this.image+'">';  
         $final_data += '</div>';  
         $final_data += '</div>';
